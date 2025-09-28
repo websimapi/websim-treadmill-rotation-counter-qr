@@ -30,6 +30,7 @@ let lastDetStr = '';
 let lastFrameTime = performance.now();
 let fpsAvg = 0;
 let zoomCaps = null, zoomTrack = null, pinch = null;
+let bellAudio = new Audio('gentle_bell.mp3'); bellAudio.preload = 'auto'; bellAudio.volume = 0.6;
 
 const MIN_VISIBLE_FRAMES = 2;
 const MIN_INVISIBLE_FRAMES = 2;
@@ -162,6 +163,7 @@ function updateState(visibleNow) {
     if (invisibleFrames >= MIN_INVISIBLE_FRAMES) {
       rotationCount++;
       els.count.textContent = rotationCount;
+      try { bellAudio.currentTime = 0; bellAudio.play(); } catch(e) {}
       els.detectDot.classList.remove('ok');
       els.detectDot.classList.add('warn');
       els.statusText.textContent = 'Marker passed';
