@@ -25,6 +25,13 @@
       <button id="stopBtn" disabled>Stop</button>
       <button id="resetBtn">Reset Count</button>
     </div>
+    <div class="control-group" id="zoomControls" class="hidden">
+      <label for="zoomRange">Zoom</label>
+      <button id="zoomMinus" aria-label="Zoom out">−</button>
+      <input id="zoomRange" type="range" min="1" max="1" step="0.1" value="1" />
+      <button id="zoomPlus" aria-label="Zoom in">+</button>
+      <span id="zoomVal">1.0×</span>
+    </div>
   </section>
 
   <!-- Live view + status -->
@@ -117,4 +124,3 @@
 <script defer src="https://static.cloudflareinsights.com/beacon.min.js/v8c78df7c7c0f484497ecbca7046644da1771523124516" integrity="sha512-8DS7rgIrAmghBFwoOTujcf6D9rXvH8xm8JQ1Ja01h9QX8EzXldiszufYa4IFfKdLUKTTrnSFXLDkUEOTrZQ8Qg==" data-cf-beacon='{"version":"2024.11.0","token":"4c6229722a6346bc8eb5cb0e5eae5d41","server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
 </body>
 </html>
-
