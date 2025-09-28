@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Treadmill Rotation Counter (QR)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Header -->
+  <header class="app-header">
+    <h1>Treadmill Rotation Counter</h1>
+    <p class="sub">Counts belt rotations by detecting a high-contrast QR marker.</p>
+  </header>
+
+  <!-- Controls -->
+  <section class="controls">
+    <div class="control-group">
+      <label for="cameraSelect">Camera</label>
+      <select id="cameraSelect"></select>
+    </div>
+    <div class="control-group">
+      <button id="startBtn">Start Camera</button>
+      <button id="stopBtn" disabled>Stop</button>
+      <button id="resetBtn">Reset Count</button>
+    </div>
+  </section>
+
+  <!-- Live view + status -->
+  <section class="live">
+    <div class="video-wrap">
+      <video id="video" playsinline></video>
+      <canvas id="overlay" aria-hidden="true"></canvas>
+      <div class="status">
+        <span class="dot" id="detectDot"></span>
+        <span id="statusText">Idle</span>
+      </div>
+    </div>
+    <div class="stats">
+      <div class="stat">
+        <div class="label">Rotations</div>
+        <div class="value" id="count">0</div>
+      </div>
+      <div class="stat">
+        <div class="label">Last Detection</div>
+        <div class="value" id="lastDet">—</div>
+      </div>
+      <div class="stat">
+        <div class="label">FPS</div>
+        <div class="value" id="fps">0</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- QR Generator -->
+  <section class="generator">
+    <h2>Print your QR marker</h2>
+    <p>Print, cut, and tape this QR securely to the treadmill belt. Aim the camera so the marker area is clearly visible.</p>
+    <div class="gen-controls">
+      <div class="control-group">
+        <label for="qrText">Data (keep it short)</label>
+        <input id="qrText" value="R" maxlength="8" />
+      </div>
+      <div class="control-group">
+        <label for="qrSize">Print size</label>
+        <select id="qrSize">
+          <option value="120">120 mm (recommended)</option>
+          <option value="90">90 mm</option>
+          <option value="150">150 mm</option>
+        </select>
+      </div>
+      <div class="control-group">
+        <label for="qrMargin">Margin (modules)</label>
+        <input id="qrMargin" type="number" min="0" max="8" value="2" />
+      </div>
+      <div class="control-group">
+        <label for="qrECC">Error correction</label>
+        <select id="qrECC">
+          <option value="L" selected>L (fast)</option>
+          <option value="M">M</option>
+          <option value="Q">Q</option>
+          <option value="H">H (robust)</option>
+        </select>
+      </div>
+      <div class="control-group">
+        <button id="makeQR">Generate</button>
+        <button id="printQR">Print</button>
+      </div>
+    </div>
+    <div class="qr-preview-wrap">
+      <canvas id="qrCanvas" width="600" height="600" aria-label="QR code preview"></canvas>
+      <div class="qr-meta">
+        <span>Target data:</span>
+        <code id="targetData">R</code>
+      </div>
+    </div>
+    <p class="tip">Tip: Use bright lighting. Place the camera steady and angled so the belt surface fills most of the frame.</p>
+  </section>
+
+  <footer class="footer">
+    <small>No calibration required. The app counts one rotation each time the QR marker appears and then leaves the view.</small>
+  </footer>
+
+  <!-- Import map (ESM from CDN) -->
+  <script type="importmap">
+  {
+    "imports": {
+      "jsqr": "https://esm.sh/jsqr@1.4.0",
+      "qrcode": "https://esm.sh/qrcode@1.5.3"
+    }
+  }
+  </script>
+
+  <script type="module" src="main.js"></script>
+  <script type="module" src="qr-generator.js"></script>
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js/v8c78df7c7c0f484497ecbca7046644da1771523124516" integrity="sha512-8DS7rgIrAmghBFwoOTujcf6D9rXvH8xm8JQ1Ja01h9QX8EzXldiszufYa4IFfKdLUKTTrnSFXLDkUEOTrZQ8Qg==" data-cf-beacon='{"version":"2024.11.0","token":"4c6229722a6346bc8eb5cb0e5eae5d41","server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
+</body>
+</html>
+

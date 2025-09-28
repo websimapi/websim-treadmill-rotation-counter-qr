@@ -1,0 +1,60 @@
+/* ...existing styles... */
+:root {
+  --fg: #111;
+  --bg: #fff;
+  --muted: #666;
+  --ok: #0a8f3c;
+  --warn: #d97706;
+}
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: "Noto Sans", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+}
+.app-header { padding: 24px 20px 8px; border-bottom: 1px solid #eee; }
+h1 { margin: 0 0 6px; font-weight: 700; }
+.sub { margin: 0; color: var(--muted); }
+
+.controls, .live, .generator { padding: 16px 20px; }
+.controls { display: flex; gap: 16px; flex-wrap: wrap; align-items: center; }
+.control-group { display: flex; gap: 8px; align-items: center; }
+label { color: var(--muted); }
+
+button, select, input {
+  padding: 8px 12px; border: 1px solid #ddd; border-radius: 8px; background: #fff; color: var(--fg);
+}
+button { cursor: pointer; transition: transform 120ms ease, background 150ms ease; }
+button:active { transform: scale(0.98); }
+
+.live { display: grid; grid-template-columns: 1fr auto; gap: 16px; align-items: start; }
+.video-wrap { position: relative; width: 100%; max-width: 820px; border: 1px solid #eee; border-radius: 12px; overflow: hidden; }
+video, canvas#overlay { display: block; width: 100%; height: auto; }
+canvas#overlay { position: absolute; inset: 0; pointer-events: none; }
+.status {
+  position: absolute; bottom: 8px; left: 8px;
+  display: inline-flex; gap: 8px; align-items: center;
+  padding: 6px 10px; background: rgba(255,255,255,0.9); border: 1px solid #ddd; border-radius: 999px;
+}
+.dot { width: 10px; height: 10px; border-radius: 50%; background: #bbb; }
+.dot.ok { background: var(--ok); }
+.dot.warn { background: var(--warn); }
+.stats { display: flex; gap: 16px; }
+.stat { min-width: 120px; padding: 12px; border: 1px solid #eee; border-radius: 10px; }
+.label { color: var(--muted); font-size: 12px; }
+.value { font-size: 28px; font-weight: 700; }
+
+.generator { border-top: 1px solid #eee; }
+.gen-controls { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 12px; }
+.qr-preview-wrap { display: flex; gap: 16px; align-items: center; }
+.qr-preview-wrap canvas { border: 1px solid #eee; border-radius: 8px; background: #fff; width: 300px; height: 300px; }
+.qr-meta { display: inline-flex; gap: 8px; align-items: center; color: var(--muted); }
+code { background: #f6f6f6; padding: 2px 6px; border-radius: 6px; }
+
+.tip { color: var(--muted); }
+
+.footer { padding: 16px 20px 40px; color: var(--muted); }
+/* ...existing styles... */
+
